@@ -22,3 +22,21 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.env.local
+.env.*.local
+# npm
+package-lock.json
+.yarnrc
+.pnpm-lock.yaml
+
+# Cache files
+.cache/
+.next/cache/
+.temp/
+.vscode/*
+.temporary/
+npm-cache/
+.yarn-cache/
+# VSCode settings (already covered, but also ignore workspace settings if not needed)
+.vscode/*
+.vscode-workspace/
