@@ -30,7 +30,10 @@ app.get('*', (req, res) => {
 
 app.use(
     cors({
-        origin: [process.env.ORIGIN],
+        origin: [
+            process.env.ORIGIN, // Local URL
+            "https://synchronous-chatapp.onrender.com" // Deployed URL
+        ],
         methods: ["GET","POST","PATCH","PUT","DELETE"],
         credentials: true,
     })
