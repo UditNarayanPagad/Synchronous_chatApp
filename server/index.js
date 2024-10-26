@@ -18,14 +18,19 @@ const port = process.env.PORT || 3001;
 const databaseUrl = process.env.DATABASE_URL
 const corsOptions = {
     origin: [
-        process.env.ORIGIN,
-        "https://synchronous-chatapp.onrender.com"
+        "https://synchronous-chatapp.onrender.com","http://localhost:5173"
     ],
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
 };
 
 app.use(cors(corsOptions));
+
+ app.all('*', function(req, res, next) {
+            res.header("Access-Control-Allow-Origin", cors.origin);
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        });
 
 // Allow preflight requests
 app.options("*", cors(corsOptions));
