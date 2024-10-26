@@ -17,9 +17,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 const databaseUrl = process.env.DATABASE_URL
 const corsOptions = {
-    origin: [
-        "https://synchronous-chatapp.onrender.com","http://localhost:5173"
-    ],
+    origin: "*",
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
 };
