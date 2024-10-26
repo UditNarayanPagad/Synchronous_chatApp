@@ -36,7 +36,7 @@ app.options("*", cors(corsOptions));
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://synchronous-chatapp.onrender.com"
+    "*"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
