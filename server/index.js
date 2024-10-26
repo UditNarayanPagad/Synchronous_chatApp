@@ -16,16 +16,19 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 const databaseUrl = process.env.DATABASE_URL
-app.use(
-    cors({
-        origin: [
-            process.env.ORIGIN, // Local URL
-            "https://synchronous-chatapp.onrender.com" // Deployed URL
-        ],
-        methods: ["GET","POST","PATCH","PUT","DELETE"],
-        credentials: true,
-    })
-)
+const corsOptions = {
+    origin: [
+        process.env.ORIGIN,
+        "https://synchronous-chatapp.onrender.com"
+    ],
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+// Allow preflight requests
+app.options("*", cors(corsOptions));
 
 // Resolve the __dirname equivalent in ES modules
 const __filename = fileURLToPath(import.meta.url);
