@@ -16,6 +16,16 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 const databaseUrl = process.env.DATABASE_URL
+app.use(
+    cors({
+        origin: [
+            process.env.ORIGIN, // Local URL
+            "https://synchronous-chatapp.onrender.com" // Deployed URL
+        ],
+        methods: ["GET","POST","PATCH","PUT","DELETE"],
+        credentials: true,
+    })
+)
 
 // Resolve the __dirname equivalent in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -28,16 +38,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
-app.use(
-    cors({
-        origin: [
-            process.env.ORIGIN, // Local URL
-            "https://synchronous-chatapp.onrender.com" // Deployed URL
-        ],
-        methods: ["GET","POST","PATCH","PUT","DELETE"],
-        credentials: true,
-    })
-)
+
 app.use('/uploads/profiles', express.static('uploads/profiles'));
 app.use("/uploads/files", express.static('uploads/files'))
 app.use(cookieParser())
