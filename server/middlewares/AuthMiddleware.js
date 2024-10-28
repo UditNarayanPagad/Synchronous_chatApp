@@ -1,6 +1,6 @@
 export const verifyToken = (req, res, next) => {
     const token = req.cookies.jwt;
-    console.log("Token:", token); // Log the token
+    console.log("Token:", token);
 
     if (!token) {
         return res.status(401).send("You are not authenticated");
@@ -11,7 +11,7 @@ export const verifyToken = (req, res, next) => {
             return res.status(403).send("Token is not valid");
         }
         req.userId = payload.userId;
-        console.log("Payload:", payload); // Log the payload
+        console.log("Payload:", payload);
         next();
     });
 };
