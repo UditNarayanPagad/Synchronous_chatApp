@@ -23,12 +23,7 @@ const Chat = () => {
       navigate("/profile");
     }
   }, [userInfo, navigate]);
-   useEffect(() => {
-    const fetchContacts = async () => {
-      await getContacts();
-    };
-    fetchContacts();
-  }, [getContacts]);
+   
   return (
     <div className="flex h-[100vh] text-white overflow-hidden ">
       {fileUploading && <div className="fixed top-0 z-[1000] left-0 h-[100vh] w-[100vw] backdrop-blur-lg flex items-center justify-center ">
