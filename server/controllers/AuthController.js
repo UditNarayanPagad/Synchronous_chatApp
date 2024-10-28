@@ -73,6 +73,7 @@ export const logIn = async (req, res, next) => {
 export const getUserInfo = async (req, res, next) => {
   try {
     const userData = await User.findById(req.userId);
+    console.log("User ID:", req.userId);
     if (!userData) {
         return res.status(404).send("User with the given email not found");
     }
