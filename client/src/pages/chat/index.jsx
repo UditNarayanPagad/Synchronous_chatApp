@@ -14,6 +14,7 @@ const Chat = () => {
     fileDownloading,
     fileUploadProgress,
     fileDownloadProgress,
+    getContacts,
   } = useAppStore();
   const navigate = useNavigate();
   useEffect(() => {
