@@ -16,9 +16,10 @@ const ContactsContainer = () => {
     setChannels,
     userInfo,
   } = useAppStore();
+  
    useEffect(() => {
     getContacts();
-  }, [setDirectMesagesContacts,userInfo]);
+  }, [setDirectMesagesContacts]);
 
   useEffect(() => {
     const getChannels = async () => {
@@ -29,7 +30,6 @@ const ContactsContainer = () => {
         setChannels(response.data.channels);
       }
     };
-    getContacts();
     getChannels();
   }, []);
 
