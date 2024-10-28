@@ -74,9 +74,13 @@ app.use("/api/contacts",contactRoutes)
 app.use("/api/messages",messagesRoutes)
 app.use("/api/channel",channelRoutes)
 
-const server = app.listen(port, ()=>{
-    console.log(`Server running on http://localhost:${port}`)
-})
+const server = app.listen(port, () => {
+    const baseUrl = process.env.NODE_ENV === 'production' 
+        ? `https://synchronous-chatapp.onrender.com` 
+        : `http://localhost:${port}`;
+    
+    console.log(`Server running on ${baseUrl}`);
+});
 setupSocket(server)
 
 mongoose.connect(databaseUrl)
