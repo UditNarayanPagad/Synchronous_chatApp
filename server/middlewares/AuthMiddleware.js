@@ -1,18 +1,17 @@
-import jwt from "jsonwebtoken";
-
 export const verifyToken = (req, res, next) => {
     const token = req.cookies.jwt;
-    console.log("Token:", token);
+    console.log("Token:", token); // Log the token
+
     if (!token) {
         return res.status(401).send("You are not authenticated");
     }
-    
+
     jwt.verify(token, process.env.JWT_KEY, (error, payload) => {
         if (error) {
             return res.status(403).send("Token is not valid");
         }
-         console.log(payload);
-        req.userId = payload.userId; 
+        req.userId = payload.userId;
+        console.log("Payload:", payload); // Log the payload
         next();
     });
 };
