@@ -48,7 +48,8 @@ function App() {
     }else{
       setLoading(false)
     }
-  },[userInfo,setUserInfo])
+  },[userInfo])
+  
   
 
   if (loading) {
