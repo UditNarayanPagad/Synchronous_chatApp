@@ -72,10 +72,8 @@ export const logIn = async (req, res, next) => {
 };
 export const getUserInfo = async (req, res, next) => {
   try {
-    console.log("req.userId 75: ",req.userId);
     const {userId } = req;
     const userData = await User.findById(userId);
-    console.log("User ID:", req.userId);
     if (!userData) {
         return res.status(404).send("User with the given email not found");
     }
@@ -95,7 +93,6 @@ export const getUserInfo = async (req, res, next) => {
 };
 export const updateProfile = async (req, res, next) => {
   try {
-    console.log("req.userId 97 ",req.userId);
     const {userId } = req;
     const {firstName, lastName, color} = req.body;
 
@@ -135,7 +132,6 @@ export const addProfileImage = async (req, res, next) => {
 };
 export const deleteProfileImage = async (req, res, next) => {
   try {
-    console.log("req.userId 137 ",req.userId);
     const {userId } = req;
     const user = await User.findById(userId);
     if (!user) {
