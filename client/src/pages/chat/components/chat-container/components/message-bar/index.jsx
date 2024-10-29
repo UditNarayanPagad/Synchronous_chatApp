@@ -121,7 +121,7 @@ const MessageBar = () => {
           >
             <MdEmojiEmotions className="text-xl" />
           </button>
-          <div className="absolute bottom-16 right-0" ref={emojiRef}>
+          <div className="absolute bottom-16 right-[-30px] md:right-0" ref={emojiRef}>
             <EmojiPicker
               theme="dark"
               open={emojiPickerOpen}
