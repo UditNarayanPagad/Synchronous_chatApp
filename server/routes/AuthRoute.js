@@ -11,7 +11,7 @@ const upload = multer({ storage })
 
 authRoutes.post("/signUp",signUp)
 authRoutes.post("/logIn", logIn)
-authRoutes.get("/userInfo",verifyToken,getUserInfo)
+authRoutes.get("/getUserInfo",verifyToken,getUserInfo)
 authRoutes.post('/updateProfile',verifyToken,updateProfile)
 authRoutes.post('/addProfileImage',verifyToken, upload.single('profileImage'),addProfileImage)
 authRoutes.delete("/deleteProfileImage",verifyToken,deleteProfileImage)
