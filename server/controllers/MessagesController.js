@@ -12,6 +12,8 @@ cloudinary.config({
 });
 
 export const getMessages = async (req, res, next) => {
+    console.log("req.userId 15 ",req.userId);
+    console.log("req.bodyId 16 ",req.body.id);
     try {
       const user1 = req.userId;
       const user2 = req.body.id;
