@@ -57,22 +57,24 @@ app.use((req, res, next) => {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve static files
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(cookieParser());
+app.use(express.json());
 
+// Register API routes *before* serving static files
+app.use("/api/auth", authRoutes);
+app.use("/api/contacts", contactRoutes);
+app.use("/api/messages", messagesRoutes);
+app.use("/api/channel", channelRoutes);
+
+// Serve uploads directories
+app.use('/uploads/profiles', express.static('uploads/profiles'));
+app.use('/uploads/files', express.static('uploads/files'));
+
+// Serve static files for the client app after all other routes
+app.use(express.static(path.join(__dirname, '../client/dist')));
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
-
-
-app.use('/uploads/profiles', express.static('uploads/profiles'));
-app.use("/uploads/files", express.static('uploads/files'))
-app.use(cookieParser())
-app.use(express.json())
-app.use("/api/auth",authRoutes)
-app.use("/api/contacts",contactRoutes)
-app.use("/api/messages",messagesRoutes)
-app.use("/api/channel",channelRoutes)
 
 const server = app.listen(port, () => {
     const baseUrl = process.env.NODE_ENV === 'production' 
