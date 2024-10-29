@@ -6,7 +6,7 @@ import Profile from "./pages/profile";
 import { useEffect, useState } from "react";
 import { useAppStore } from "./store";
 import { apiClient } from "./lib/api-client";
-import { GET_USER_INFO } from "./utils/constants";
+import { GET_USER_INFO } from "./utils/constants.js";
 
 const PrivateRoute = ({ children }) => {
   const { userInfo } = useAppStore();
@@ -30,7 +30,7 @@ function App() {
       try {
         const response = await apiClient.get(GET_USER_INFO,{withCredentials: true})
         console.log(response)
-        if (response.status === 200 && response.data.id) {
+        if (response.status === 200) {
           setUserInfo(response.data);
         }else{
           setUserInfo(undefined)
