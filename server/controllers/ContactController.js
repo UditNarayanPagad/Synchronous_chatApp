@@ -3,6 +3,7 @@ import User from "../models/Usermodel.js";
 import Message from "../models/MessagesModel.js";
 
 export const searchContacts = async (req, res, next) => {
+    console.log("req.userId 6 ",req.userId);
     try {
       const {searchTerm} = req.body;
       if (searchTerm === undefined || searchTerm === null) {
@@ -24,6 +25,7 @@ export const searchContacts = async (req, res, next) => {
 
   export const getContactsForDM = async (req, res, next) => {
     try {
+        console.log("req.userId 28 ",req.userId);
       let { userId } = req;
       userId = new mongoose.Types.ObjectId(userId);
       
@@ -84,6 +86,7 @@ export const searchContacts = async (req, res, next) => {
   
 
   export const getAllContacts = async (req, res, next) => {
+      console.log("req.userId 89 ",req.userId);
     try {
       const users = await User.find(
         { _id: { $ne: req.userId } },
